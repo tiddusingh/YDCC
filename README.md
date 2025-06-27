@@ -14,6 +14,7 @@ This repository contains the source code for the official website of the Yerrabi
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
+and do some work yourself
 
 ### Prerequisites
 
