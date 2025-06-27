@@ -150,37 +150,66 @@ main {
     .navbar .container {
         justify-content: space-between;
     }
-}
 
+    /* This combines all mobile button stacking rules for consistency */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        max-width: 350px; /* Constrain the button container width */
+        margin: 0 auto; /* Center the container */
+    }
+
+    .hero-buttons .btn {
+        width: 100%; /* Make buttons fill the container */
+        box-sizing: border-box;
+    }
+
+    /* This rule specifically targets the index page's second button */
+    .hero-section .btn-secondary {
+        margin-left: 0;
+    }
+}
 
 .hero-section {
     background: url('../images/hero_about1.png') no-repeat center center/cover;
-    height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     color: var(--light-text);
     position: relative;
+    padding: 5rem 20px;
+    box-sizing: border-box;
+    display: flow-root; /* The modern way to create a BFC and contain all children */
 }
 
-.hero-overlay {
+.page-content {
+    padding: 4rem 20px;
+    background: var(--light-bg);
+    position: relative; /* Creates a stacking context */
+    z-index: 1;         /* Ensures it renders above the hero overlay */
+}
+
+.hero-section::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(to top, rgba(26, 26, 26, 0.8), transparent 50%);
+    z-index: 1; /* Ensure overlay is behind the content */
 }
 
 section#hero {
     background-image: url('../images/hero1.png');
-    height: 90vh;
+    padding: 5rem 20px; /* Use padding to control height */
+    min-height: 90vh; /* Keep for the home page */
 }
 
 .hero-section .container {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* This ensures the hero content is above the ::before pseudo-element */
 }
 
 .hero-section h1 {
@@ -576,6 +605,50 @@ section#hero {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
+}
+
+/* Registration Process Section */
+.registration-process{
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.registration-process h2 {
+    margin-bottom: 40px;
+}
+
+.player-category {
+    text-align: left;
+    margin-bottom: 40px;
+    max-width: 800px; /* To improve readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.player-category h3 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.player-category ol {
+    list-style-position: outside; /* Better alignment */
+    padding-left: 20px;
+}
+
+.player-category li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.player-category li strong {
+    color: var(--primary-color);
+}
+
+.player-category a {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 .footer {
